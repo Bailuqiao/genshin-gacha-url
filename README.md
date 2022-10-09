@@ -21,6 +21,11 @@ var cookie=document.cookie;var ask=confirm('Cookie:'+cookie+'\n\nDo you want to 
 
 3.执行main.py，粘贴cookie，回车，若有多个账号，按提示输入序号即可，程序执行完毕后，会打印出`https://…#log`的链接，将它复制粘贴到别人的抽卡分析程序里就可以记录抽卡信息了
 
+## 安装第三方库
+```
+pip install -r requirements.txt
+```
+
 ## 我想说的
 - 手机端也是可以操作的，用kiwi浏览器，这个浏览器有开发者工具，可以获取cookie。运行python的话可以用Turmux之类的软件
 - 那些获取抽卡记录链接的app也是能用的，挑选自己信得过的用
