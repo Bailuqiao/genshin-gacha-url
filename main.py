@@ -118,3 +118,4 @@ authkey = r.json()['data']['authkey']
 gacha_url = 'https://webstatic.mihoyo.com/hk4e/event/e20190909gacha-v2/index.html?win_mode=fullscreen&authkey_ver=1&sign_type=2&auth_appid=webview_gacha&init_type=200&timestamp={}&lang=zh-cn&device_type=mobile&plat_type=android&region={}&authkey={}&game_biz={}#/log'.format(int(time.time()),region,urllib.parse.quote(authkey),game_biz)
 
 print(gacha_url)
+input()
