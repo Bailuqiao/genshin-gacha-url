@@ -24,7 +24,7 @@ url='https://webapi.account.mihoyo.com/Api/login_by_cookie?t='
 
 account_info=requests.get(url+str(int(time.time()*1000)),headers=headers).json()
 
-print(account_info)
+#print(account_info)
 
 account_id = account_info['data']['account_info']['account_id']
 url='https://api-takumi.mihoyo.com/auth/api/getMultiTokenByLoginTicket?login_ticket={}&token_types=3&uid={}'.format(account_info['data']['account_info']['weblogin_token'],account_id)
@@ -49,17 +49,21 @@ print(r.text)
 #列表里有米游社绑定的所有原神账号信息
 game_info = r.json()['data']['list']
 
-#有多个原神账号
+#没有绑定原神账号
 if game_info == []:
     print('没有绑定原神账号，请先去米游社绑定')
     input()
     os.exit()
+#多个账号
 elif len(game_info) > 1 :
     print('有多个原神账号，请选择：')
     for i,v in enumerate(game_info):
         print(f"{i+1}.uid:{v['game_uid']} 昵称:{v['nickname']}")
     select = int(input('请输入序号：'))
     game_info = game_info[select-1]
+#一个账号
+else:
+    game_info = game_info[0]
 
 
 game_uid = game_info['game_uid']
@@ -118,4 +122,3 @@ authkey = r.json()['data']['authkey']
 gacha_url = 'https://webstatic.mihoyo.com/hk4e/event/e20190909gacha-v2/index.html?win_mode=fullscreen&authkey_ver=1&sign_type=2&auth_appid=webview_gacha&init_type=200&timestamp={}&lang=zh-cn&device_type=mobile&plat_type=android&region={}&authkey={}&game_biz={}#/log'.format(int(time.time()),region,urllib.parse.quote(authkey),game_biz)
 
 print(gacha_url)
-input()
