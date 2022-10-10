@@ -44,7 +44,7 @@ str1 += cookies
 
 url = 'https://api-takumi.mihoyo.com/binding/api/getUserGameRolesByCookie?game_biz=hk4e_cn'
 r  = requests.get(url, headers={'cookie':str1})
-print(r.text)
+#print(r.text)
 
 #列表里有米游社绑定的所有原神账号信息
 game_info = r.json()['data']['list']
